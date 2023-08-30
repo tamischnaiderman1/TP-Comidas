@@ -52,7 +52,6 @@ return (
     },
     TextInput: {
         borderradius: 30,
-        borderBlockColor: "000",
         borderColor:"#a8977d",
         height: 50,
         padding: 10,
