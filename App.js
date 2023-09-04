@@ -10,13 +10,14 @@ import {
   Button,
   TouchableOpacity,
 } from "react-native";
+import { AuthProvider } from './context/index.js';
 
 export default function App() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   
   return (
-    <Login/>
+    <AuthProvider>
+      <Login/>
+    </AuthProvider>
   );
 }
 

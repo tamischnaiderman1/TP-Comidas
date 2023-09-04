@@ -9,10 +9,21 @@ TextInput,
 Button,
 TouchableOpacity,
 } from "react-native";
+import { useAuth } from "./context";
+import axios from "axios";
+import { ActionTypes } from "./context/reducer";
 
 export default function Login() {
 const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
+const { setState, state } = useAuth();
+
+const signin = async (email, password) => {
+    const { data: { token } } = await axios.post("http://challenge-react.alkemy.org/", { email, password })
+    setState({ type: ActionTypes.SetToken, value: token });
+};
+
+console.log({ state })
 
 return (
     <View style={styles.container}>
@@ -34,11 +45,18 @@ return (
     />
     <TouchableOpacity
         style={styles.loginBtn}
-        onPress={() => {
-        if (email == "" || password == "") {
-            window.alert("Por favor, complete ambos campos.");
-        } else {
-        }
+        onPress={async () => {
+            if (email == "" || password == "") {
+                window.alert("Por favor, complete ambos campos.");
+            } else {
+                try {
+                    await signin(email, password);
+                    
+                }
+                catch (error) {
+                    window.alert("Credenciales inválidas");
+                }
+            }
         }}
     >
         <Text style={styles.loginText}>LOGIN</Text>
