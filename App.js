@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import Login from './Login.js';
+import Home from './Home.js';
 import {
   StyleSheet,
   Text,
@@ -16,7 +17,7 @@ export default function App() {
   
   return (
     <AuthProvider>
-      <Login/>
+      <Home/>
     </AuthProvider>
   );
 }
