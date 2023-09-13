@@ -96,6 +96,13 @@ TextInput: {
     marginBottom: 10,
     alignItems: "center",
     width: "80%",
+    shadowOffset: {
+        width: 3,
+        height: 5,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 10,
+    placeholderTextColor: "gray",
 },
 loginBtn: {
     width: "80%",
