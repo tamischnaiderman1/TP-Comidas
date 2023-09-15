@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   SafeAreaView,
   FlatList,
@@ -14,85 +14,81 @@ import axios from "axios";
 import { ActionTypes } from "./context/reducer";
 
 export default function Home() {
-const [platos, setPlatos] = useState([]);
-const [buscar, setBuscar] = useState("");
+  const [platos, setPlatos] = useState([]);
+  const [buscar, setBuscar] = useState("");
 
-useEffect(() => {
-    const apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=79cc068bbcbf489394c77ea977d385d4&query=${buscar}`
-    axios.get(apiUrl)
-        .then((response) => {
-        setPlatos(response.data.results);
-        console.log(response.data.results);
-        });
-}, [buscar]);
+  useEffect(() => {
+    const apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=b8f09de956224d7b8d662d874614e14d&query=${buscar}`;
+    axios.get(apiUrl).then((response) => {
+      setPlatos(response.data.results);
+      console.log(response.data.results);
+    });
+  }, [buscar]);
 
-
-return (
+  return (
     <View style={styles.container}>
-    <TextInput
+      <TextInput
         style={styles.TextInput}
         value={buscar}
         placeholder="Buscar"
         placeholderTextColor="#000"
         onChangeText={(buscar) => setBuscar(buscar)}
-    />
-    {
-        buscar.length>2 ? 
-        /*aca va lo que pasa si es true, hay que dentro del use efffect ponerle la condicion del buscador*/
+      />
+      {buscar.length > 2 ? (
+        /*aca va lo que pasa si es true, hay que dentro del use efffect ponerle la condicion del buscador
+        faltaria ponerlo en una card y agregar el boton de ver detalle, 
+        eso te lleva a otra pantalla y ahi podes agregar o eliminarlo del menu*/
         <FlatList
-        data={platos}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => (
-        <View>
-            <Text style={styles.menu}>{item.title}</Text>
-            <Image style={styles.imagen}source={item.image}/>
-        </View>
-        )}
+          data={platos}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item }) => (
+            <View>
+              <Text style={styles.menu}>{item.title}</Text>
+              <Image style={styles.imagen} source={item.image} />
+            </View>
+          )}
         />
-        :
+      ) : (
         /*aca va lo que pasa si es false*/
-        console.log("false")
-    }
-    
+        console.log("la busqueda debe contener mas de dos caracteres")
+      )}
     </View>
-);
+  );
 }
 
 const styles = StyleSheet.create({
-container: {
+  container: {
     flex: 1,
     marginTop: StatusBar.currentHeight || 0,
     marginHorizontal: 20,
-},
-item: {
+  },
+  item: {
     padding: 10,
     marginVertical: 8,
     marginHorizontal: 16,
-},
-title: {
+  },
+  title: {
     fontSize: 32,
-},
-imagen:{
-    width: 320, 
-    height: 320, 
+  },
+  imagen: {
+    width: 320,
+    height: 320,
     marginBottom: 10,
     marginHorizontal: 20,
-},
-menu: {
+  },
+  menu: {
     fontSize: 15,
     fontWeight: "bold",
     color: "#a8977d",
     marginHorizontal: 20,
-    
-},
-TextInput: {
-    
+  },
+  TextInput: {
     marginHorizontal: 17,
     padding: 10,
     borderRadius: 20,
     shadowOffset: {
-    width: 3,
-    height: 5,
+      width: 3,
+      height: 5,
     },
     shadowOpacity: 0.2,
     shadowRadius: 10,
@@ -102,5 +98,11 @@ TextInput: {
     alignItems: "center",
     width: "90%",
     marginTop: 15,
-},
+  },
+  button: {
+    borderRadius: 0,
+    marginLeft: 0,
+    marginRight: 0,
+    marginBottom: 0,
+  }
 });
