@@ -18,13 +18,13 @@ const [platos, setPlatos] = useState([]);
 const [buscar, setBuscar] = useState("");
 
 useEffect(() => {
-    const apiUrl = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=79cc068bbcbf489394c77ea977d385d4'
+    const apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=79cc068bbcbf489394c77ea977d385d4&query=${buscar}`
     axios.get(apiUrl)
         .then((response) => {
         setPlatos(response.data.results);
         console.log(response.data.results);
         });
-}, []);
+}, [buscar]);
 
 
 return (
@@ -100,7 +100,7 @@ TextInput: {
     height: 50,
     marginBottom: 10,
     alignItems: "center",
-    width: "80%",
+    width: "90%",
     marginTop: 15,
 },
 });
