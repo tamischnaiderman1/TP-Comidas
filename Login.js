@@ -13,7 +13,7 @@ import { useAuth } from "./context";
 import axios from "axios";
 import { ActionTypes } from "./context/reducer";
 
-export default function Login() {
+export default function Login({navigation}) {
 const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
 const { setState, state } = useAuth();
@@ -44,22 +44,23 @@ return (
         onChangeText={(password) => setPassword(password)}
     />
     <TouchableOpacity
-        style={styles.loginBtn}
+        style={styles.btn}
         onPress={async () => {
             if (email == "" || password == "") {
                 window.alert("Por favor, complete ambos campos.");
             } else {
                 try {
                     await signin(email, password);
-                    
+                    navigation.navigate('Home');
                 }
                 catch (error) {
                     window.alert("Credenciales inválidas");
                 }
+                
             }
         }}
     >
-        <Text style={styles.loginText}>LOGIN</Text>
+        <Text>LOGIN</Text>
     </TouchableOpacity>
     </View>
 );
@@ -104,7 +105,7 @@ TextInput: {
     shadowRadius: 10,
     placeholderTextColor: "gray",
 },
-loginBtn: {
+btn: {
     width: "80%",
     borderRadius: 30,
     height: 50,

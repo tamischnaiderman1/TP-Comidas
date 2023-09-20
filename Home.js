@@ -8,12 +8,14 @@ import {
   Text,
   Image,
   View,
+  TouchableOpacity,
 } from "react-native";
-import { useAuth } from "./context";
 import axios from "axios";
-import { ActionTypes } from "./context/reducer";
+import { Link } from "react-router-dom";
+import { Button } from "react-native-web";
 
-export default function Home() {
+
+export default function Home({navigation}) {
   const [platos, setPlatos] = useState([]);
   const [buscar, setBuscar] = useState("");
 
@@ -35,7 +37,7 @@ export default function Home() {
         onChangeText={(buscar) => setBuscar(buscar)}
       />
       {buscar.length > 2 ? (
-        /*aca va lo que pasa si es true, hay que dentro del use efffect ponerle la condicion del buscador
+        /*aca va lo que pasa si es true,
         faltaria ponerlo en una card y agregar el boton de ver detalle, 
         eso te lleva a otra pantalla y ahi podes agregar o eliminarlo del menu*/
         <FlatList
@@ -45,6 +47,19 @@ export default function Home() {
             <View>
               <Text style={styles.menu}>{item.title}</Text>
               <Image style={styles.imagen} source={item.image} />
+              <TouchableOpacity
+                style={styles.btn}
+                onPress={() => navigation.navigate("Detalle")}
+              >
+                <Text>Ver Detalle</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.btn}
+                onPress={() => navigation.navigate("Detalle")}
+              /*dentro del on press hay q poner una funcion de eliminar*/
+              >
+                <Text>Eliminar</Text> 
+              </TouchableOpacity>
             </View>
           )}
         />
@@ -99,10 +114,14 @@ const styles = StyleSheet.create({
     width: "90%",
     marginTop: 15,
   },
-  button: {
-    borderRadius: 0,
-    marginLeft: 0,
-    marginRight: 0,
-    marginBottom: 0,
-  }
+  btn: {
+    width: "80%",
+    borderRadius: 30,
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 40,
+    backgroundColor: "#a8977d",
+    marginBottom: 50,
+},
 });
