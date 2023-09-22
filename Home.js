@@ -11,7 +11,6 @@ import {
   TouchableOpacity,
 } from "react-native";
 import axios from "axios";
-import { Button } from "react-native-web";
 
 
 export default function Home({navigation}) {
@@ -19,7 +18,7 @@ export default function Home({navigation}) {
   const [buscar, setBuscar] = useState("");
 
   useEffect(() => {
-    const apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=b8f09de956224d7b8d662d874614e14d&query=${buscar}`;
+    const apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=79cc068bbcbf489394c77ea977d385d4&query=${buscar}`;
     axios.get(apiUrl).then((response) => {
       setPlatos(response.data.results);
       console.log(response.data.results);
@@ -37,6 +36,12 @@ export default function Home({navigation}) {
         placeholderTextColor="#000"
         onChangeText={(buscar) => setBuscar(buscar)}
       />
+      <TouchableOpacity
+            style={styles.btn}
+            onPress={() => navigation.navigate("Menu")}
+            >
+          <Text>Ver Menu</Text>
+      </TouchableOpacity>
       {buscar.length > 2 ? (
         /*aca va lo que pasa si es true,
         faltaria ponerlo en una card y agregar el boton de ver detalle, 
