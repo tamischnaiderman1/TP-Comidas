@@ -11,7 +11,6 @@ import {
   TouchableOpacity,
 } from "react-native";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import { Button } from "react-native-web";
 
 
@@ -26,6 +25,8 @@ export default function Home({navigation}) {
       console.log(response.data.results);
     });
   }, [buscar]);
+
+  
 
   return (
     <View style={styles.container}>
@@ -49,16 +50,9 @@ export default function Home({navigation}) {
               <Image style={styles.imagen} source={item.image} />
               <TouchableOpacity
                 style={styles.btn}
-                onPress={() => navigation.navigate("Detalle")}
+                onPress={() => navigation.navigate("Detalle", item)}
               >
                 <Text>Ver Detalle</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.btn}
-                onPress={() => navigation.navigate("Detalle")}
-              /*dentro del on press hay q poner una funcion de eliminar*/
-              >
-                <Text>Eliminar</Text> 
               </TouchableOpacity>
             </View>
           )}
@@ -116,12 +110,13 @@ const styles = StyleSheet.create({
   },
   btn: {
     width: "80%",
+    marginHorizontal: 32,
     borderRadius: 30,
     height: 50,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 40,
+    marginTop: 5,
     backgroundColor: "#a8977d",
-    marginBottom: 50,
+    marginBottom: 5,
 },
 });

@@ -16,12 +16,14 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { AuthProvider } from './context/index.js';
+import { ContextProvider } from "./contextState";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <AuthProvider>
+    <ContextProvider>
+      <AuthProvider>
       <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen 
@@ -33,17 +35,19 @@ export default function App() {
           component={Home}
         />
         <Stack.Screen 
-          name="Menu" 
-          component={Menu} 
-        />
-        <Stack.Screen 
           name="Detalle" 
           component={Detalle} 
         />
-        
+        <Stack.Screen 
+          name="Menu" 
+          component={Menu} 
+        />
+      
       </Stack.Navigator>
     </NavigationContainer>
     </AuthProvider>
+    </ContextProvider>
+    
   );
 }
 

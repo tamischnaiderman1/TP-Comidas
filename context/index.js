@@ -12,6 +12,7 @@ export const AuthProvider = ({ children }) => {
   const value = { state, setState };
 
   return (
+    
     <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
