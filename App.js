@@ -26,10 +26,10 @@ export default function App() {
       <AuthProvider>
       <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen 
+        {/*<Stack.Screen 
           name="Login" 
           component={Login} 
-        />
+        />*/}
         <Stack.Screen
           name="Home"
           component={Home}

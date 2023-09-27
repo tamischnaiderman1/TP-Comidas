@@ -1,22 +1,21 @@
 import React, { useContext } from "react";
 
 export const initialState = {
-  userToken: "",
   menu: [],
 };
 
 export const ActionTypes = {
-  setUserToken: "Set_USER_TOKEN",
   setMenu: "SET_MENU",
+  eliminarFromMenu: "ELIMINAR_FROM_MENU",
 };
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionTypes.setUserToken: {
-      return { ...state, userToken: action.newValue };
-    }
     case ActionTypes.setMenu: {
       return { ...state, menu: [...state.menu, action.newValue]};
+    }
+    case ActionTypes.eliminarFromMenu: {
+      return { ...state, menu: state.menu.filter((item) => item.id !== action.newValue)};
     }
     default: {
       return state;

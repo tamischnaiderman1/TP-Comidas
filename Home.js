@@ -18,7 +18,7 @@ export default function Home({navigation}) {
   const [buscar, setBuscar] = useState("");
 
   useEffect(() => {
-    const apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=79cc068bbcbf489394c77ea977d385d4&query=${buscar}`;
+    const apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=1828c01ea3ac4c548b23fefbcb476f6a&query=${buscar}`;
     axios.get(apiUrl).then((response) => {
       setPlatos(response.data.results);
       console.log(response.data.results);
@@ -43,9 +43,7 @@ export default function Home({navigation}) {
           <Text>Ver Menu</Text>
       </TouchableOpacity>
       {buscar.length > 2 ? (
-        /*aca va lo que pasa si es true,
-        faltaria ponerlo en una card y agregar el boton de ver detalle, 
-        eso te lleva a otra pantalla y ahi podes agregar o eliminarlo del menu*/
+        /*faltaria ponerlo en una card*/
         <FlatList
           data={platos}
           keyExtractor={(item) => item.id.toString()}
@@ -63,7 +61,6 @@ export default function Home({navigation}) {
           )}
         />
       ) : (
-        /*aca va lo que pasa si es false*/
         console.log("la busqueda debe contener mas de dos caracteres")
       )}
     </View>
