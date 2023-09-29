@@ -41,7 +41,7 @@ export default function Menu() {
         )}
         />
         <Text style={styles.menu}>Precio total: {contextState.menu.reduce((accumulator, currentValue) => accumulator + currentValue.pricePerServing, 0)}</Text>
-        <Text style={styles.menu}>Promedio HealthScore: {contextState.menu.reduce((accumulator, currentValue) => accumulator + currentValue.healthScore, 0)/contextState.menu.length}</Text>
+        <Text style={styles.menu}>Promedio HealthScore: {contextState.menu.reduce((accumulator, currentValue) => accumulator + currentValue.healthScore, 0)/(contextState.menu.length || 1)}</Text>
         </View>
 );
 }
@@ -59,9 +59,8 @@ const styles = StyleSheet.create({
         height: 50,
         alignItems: "center",
         justifyContent: "center",
-        marginTop: 40,
         backgroundColor: "#D5E2BC",
-        marginBottom: 50,
+        marginHorizontal: 35,
     },
     imagen: {
         width: 320,

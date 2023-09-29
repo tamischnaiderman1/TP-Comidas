@@ -17,7 +17,7 @@ export default function Detalle({ navigation, route }) {
   const [estaEnMenu, setEstaEnMenu] = useState(false);
 
   useEffect(() => {
-    const apiUrl = `https://api.spoonacular.com/recipes/${route.params.id}/information?apiKey=79cc068bbcbf489394c77ea977d385d4`;
+    const apiUrl = `https://api.spoonacular.com/recipes/${route.params.id}/information?apiKey=e672dbac85a54a37adca9ce77abecf88`;
     axios.get(apiUrl).then((response) => {
       setPlato(response.data);
       console.log(response.data);
@@ -56,6 +56,7 @@ export default function Detalle({ navigation, route }) {
 
   return (
     <View style={styles.container}>
+        <Text style={styles.menu}>{plato.title}</Text>
       <Image style={styles.imagen} source={plato.image} />
       <Text style={styles.menu}>
         Price Per Serving: {plato.pricePerServing}

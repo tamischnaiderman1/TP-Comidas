@@ -18,7 +18,7 @@ export default function Home({navigation}) {
   const [buscar, setBuscar] = useState("");
 
   useEffect(() => {
-    const apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=79cc068bbcbf489394c77ea977d385d4&query=${buscar}`;
+    const apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=e672dbac85a54a37adca9ce77abecf88&query=${buscar}`;
     axios.get(apiUrl).then((response) => {
       setPlatos(response.data.results);
       console.log(response.data.results);
