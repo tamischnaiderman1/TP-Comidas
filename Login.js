@@ -105,6 +105,7 @@ TextInput: {
     placeholderTextColor: "gray",
 },
 btn: {
+    fontWeight: "bold",
     width: "80%",
     borderRadius: 30,
     height: 50,

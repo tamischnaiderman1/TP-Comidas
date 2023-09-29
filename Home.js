@@ -111,6 +111,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   btn: {
+    fontWeight: "bold",
     width: "80%",
     marginHorizontal: 32,
     borderRadius: 30,

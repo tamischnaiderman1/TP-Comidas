@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     btn: {
+        fontWeight: "bold",
         width: "80%",
         borderRadius: 30,
         height: 50,
