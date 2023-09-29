@@ -16,14 +16,6 @@ import { useContextState } from "./contextState.js";
 export default function Menu() {
     const { contextState, setContextState } = useContextState();
     const [ precio, setPrecio ] = useState(0);
-    
-    useEffect(() => {/*AYUDAAA
-        const setPrecio(contextState?.menu.reduce((anterior, actual) => anterior + actual, 0))
-        .forEach(p => {
-            setPrecio(precio => precio + p.pricePerServing) 
-            console.log(precio)
-        });*/
-    },[contextState?.menu])
 
     const Eliminar = (id) => {
         const nuevoArray = data.filter((item) => item.id !== id);
@@ -31,6 +23,7 @@ export default function Menu() {
     };
 
     return (
+        <View style={styles.container}>
         <FlatList
         data={contextState?.menu}
         keyExtractor={(item) => item.id.toString()}
@@ -47,6 +40,9 @@ export default function Menu() {
         </View>
         )}
         />
+        <Text style={styles.menu}>Precio total: {contextState.menu.reduce((accumulator, currentValue) => accumulator + currentValue.pricePerServing, 0)}</Text>
+        <Text style={styles.menu}>Promedio HealthScore: {contextState.menu.reduce((accumulator, currentValue) => accumulator + currentValue.healthScore, 0)/contextState.menu.length}</Text>
+        </View>
 );
 }
 const styles = StyleSheet.create({
@@ -63,7 +59,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         marginTop: 40,
-        backgroundColor: "#a8977d",
+        backgroundColor: "#D5E2BC",
         marginBottom: 50,
     },
     imagen: {
@@ -75,7 +71,7 @@ const styles = StyleSheet.create({
     menu: {
         fontSize: 15,
         fontWeight: "bold",
-        color: "#a8977d",
+        color: "#3B6064",
         marginHorizontal: 20,
     },
     });

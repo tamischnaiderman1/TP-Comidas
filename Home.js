@@ -18,7 +18,7 @@ export default function Home({navigation}) {
   const [buscar, setBuscar] = useState("");
 
   useEffect(() => {
-    const apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=1828c01ea3ac4c548b23fefbcb476f6a&query=${buscar}`;
+    const apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=79cc068bbcbf489394c77ea977d385d4&query=${buscar}`;
     axios.get(apiUrl).then((response) => {
       setPlatos(response.data.results);
       console.log(response.data.results);
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
   menu: {
     fontSize: 15,
     fontWeight: "bold",
-    color: "#a8977d",
+    color: "#D3C0D2",
     marginHorizontal: 20,
   },
   TextInput: {
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 5,
-    backgroundColor: "#a8977d",
+    backgroundColor: "#D5E2BC",
     marginBottom: 5,
 },
 });

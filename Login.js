@@ -91,7 +91,6 @@ inputView: {
 },
 TextInput: {
     borderRadius: 30,
-    borderColor: "#a8977d",
     height: 50,
     padding: 10,
     marginBottom: 10,
@@ -112,7 +111,7 @@ btn: {
     alignItems: "center",
     justifyContent: "center",
     marginTop: 40,
-    backgroundColor: "#a8977d",
+    backgroundColor: "#D0FFD6",
     marginBottom: 50,
 },
 });
